@@ -1,26 +1,29 @@
-document.querySelector('#submit').addEventListener("click", () => {
-    const age  = document.querySelector('#age').value;
-    const licDate  = document.querySelector('#lic').value;
-    const person = {
-        name: document.querySelector('#name').value || "Anonymous",
-        age,
-        lic: age < 18 ? 0 : licDate,
-        drive: age < 18 || age > 65 ? "No" : licDate >= 2 ? "Expert" : "Yes",
-    };
-    document.querySelector('.result').innerHTML = `
+document.querySelector("#submit").addEventListener("click", () => {
+  const age = document.querySelector("#age").value;
+  const licDate = document.querySelector("#lic").value;
+
+  const person = {
+    name: document.querySelector("#name").value || "Anonymous",
+    age,
+    lic: age < 18 ? 0 : licDate,
+    drive: age < 18 || age > 65 ? "No" : licDate >= 2 ? "Expert" : "Yes"
+  };
+
+  const text = ({name, age, lic, drive}) => `
     <strong>Name:</strong>
-    <br/> ${person.name}<br/>
+    <br/> ${name}<br/>
     <strong>Age:</strong>
-    <br/> ${person.age} year${person.age < 1 || 's'}<br/>
+    <br/> ${age} year${age > 1 ? "s" : ""}<br/>
     <strong>License date:</strong>
-    <br/> ${person.lic} year${person.lic < 1 || 's'}<br/>
+    <br/> ${lic} year${lic > 1 ? "s" : ""}<br/>
     <strong>Is driver:</strong>
     <br/> ${
-        person.drive === "No"
-         ? `<span style="color: red">No</span>` 
-         : person.drive === "Yes"
-            ? `<span style="color: green">Yes</span>`
-            : `<span style="color: blue">Expert</span>`
-     }<br/>
+        drive === "No"
+        ? `<span style="color: red">No</span>`
+        : drive === "Yes"
+        ? `<span style="color: green">Yes</span>`
+        : `<span style="color: blue">Expert</span>`
+    }<br/>
     `;
+  document.querySelector(".result").innerHTML = text(person);
 });
