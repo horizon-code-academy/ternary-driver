@@ -9,7 +9,7 @@ document.querySelector("#submit").addEventListener("click", () => {
     drive: age < 18 || age > 65 ? "No" : licDate >= 2 ? "Expert" : "Yes"
   };
 
-  const text = ({name, age, lic, drive}) => `
+  const textPlot = ({name, age, lic, drive}) => `
     <strong>Name:</strong>
     <br/> ${name}<br/>
     <strong>Age:</strong>
@@ -25,5 +25,5 @@ document.querySelector("#submit").addEventListener("click", () => {
         : `<span style="color: blue">Expert</span>`
     }<br/>
     `;
-  document.querySelector(".result").innerHTML = text(person);
+  document.querySelector(".result").innerHTML = textPlot(person);
 });
